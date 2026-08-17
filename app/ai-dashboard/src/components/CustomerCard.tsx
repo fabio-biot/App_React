@@ -1,3 +1,5 @@
+import "./CustomerCard.css"
+
 type CustomerProps = {
     name: string
     company: string
@@ -8,16 +10,18 @@ type CustomerProps = {
 
 function CustomerCard({name, company, id, onDelete, onEdit} : CustomerProps) {
     return (
-        <div>
+        <div className="customer-card">
             <h2>Customer {name}</h2>
             <p>{company}</p>
 
-            <button onClick={() => onDelete(id)}>
-                Delete
-            </button>
-            <button onClick={() => onEdit(id)}>
-                Edit
-            </button>
+            <div className="button-group">
+                <button className="delete-button" onClick={() => onDelete(id)}>
+                    Delete
+                </button>
+                <button className="edit-button" onClick={() => onEdit(id)}>
+                    Edit
+                </button>
+            </div>
         </div>
     )
 }

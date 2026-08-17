@@ -1,0 +1,27 @@
+.app-header {
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.app-header h1 {
+  color: var(--text-h);
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app-header h2 {
+  color: var(--text);
+  margin: 0.5rem 0 0;
+  font-size: 1.25rem;
+}
+
+.app-header p {
+  color: var(--text);
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}

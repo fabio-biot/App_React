@@ -1,0 +1,54 @@
+.edit-form {
+  background: var(--bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--border);
+}
+
+.edit-form h3 {
+  color: var(--text-h);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.edit-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(170, 59, 255, 0.2);
+}
+
+.edit-form button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.edit-form button:hover {
+  background: var(--accent-border);
+}
+
+.edit-form button:active {
+  transform: scale(0.98);
+}

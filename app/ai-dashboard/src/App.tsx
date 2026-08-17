@@ -35,6 +35,7 @@ function App() {
 
 
 
+
   // useEffect(() => {
   //   fetch("https://jsonplaceholder.typicode.com/users")
   //   .then(response => response.json())
@@ -123,83 +124,112 @@ function handleEdit(id: number) {
   console.log("User id --> ", id, "EDIT REQUEST")
   setEditingId(id)
 }
+function handleOnSave(id: number, name: string, company: string) {
+  console.log("editing cusotmer", {id}, {name}, {company})
+  setCustomers(
+    customer.map(customer =>
+      customer.id === id
+        ? { ...customer, name, company }
+        : customer
+    )
+  )
+  setEditingId(null)
+}
+
+
   return (
-    <div>
+    <div className="app-container">
       <Header title="AI Builder App" corps="Salesforce" />
-      <main>
-      <br></br>
-        <h2>Customers</h2>
-        <br></br>
-        <h2>Utilisation d'une map</h2>
-        <br></br>
-        
-        {loading && <p>Loading...</p>}
-        {error && <ErrorCard errorMessage={`${errorMessage}`} />}
+      <main className="app-main">
+        <section className="customers-section">
+          <h2>Customers</h2>
+          {loading && <p className="loading-message">Loading...</p>}
+          {error && (
+            <div className="error-card">
+              <ErrorCard errorMessage={`${errorMessage}`} />
+            </div>
+          )}
 
-        {customer.map(customer => 
-          <CustomerCard
-          key={customer.id}
-          name={customer.name}
-          company={customer.company}
-          id={customer.id}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
-        )
-        }
-        <br></br>
-        <input type="text"
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-        />
-        <br></br>
-        <p>Recherche: {search}</p>
-        <br></br>
-        {filteredCustomers.map(user =>
-          <CustomerCard 
-          key={user.id}
-          name={user.name}
-          company={user.company}
-          id={user.id}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-          />
-        )}
-        <br></br>
-        <form onSubmit={handleSubmit}>
-        <br></br>
-        <p>Customer Name:</p>
-          <input
-            type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Customer Name"
-          />
-          <br></br>
-          <p>Company Name:</p>
-          <input
-            type="text"
-            value={company}
-            onChange={(event) => setCompany(event.target.value)}
-            placeholder="Company Name"
-          />
-          <br></br>
-          {formError && <ErrorCard errorMessage={`${formError}`} />}
-          <button type="submit">
-            Add Customer
-          </button>
-        </form>
-        {editingId && customerToEdit && (
-            <EditingForm
-            name={customerToEdit.name}
-            company={customerToEdit.company}
+          <div className="search-section">
+            <input
+              type="text"
+              className="search-input"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search customers..."
             />
-            )
-          }
+            <p className="search-info">Recherche: {search}</p>
+          </div>
 
+          <div className="customers-grid">
+            {filteredCustomers.map(user =>
+              <CustomerCard
+                key={user.id}
+                name={user.name}
+                company={user.company}
+                id={user.id}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+              />
+            )}
+          </div>
+        </section>
+
+        <section className="add-customer-section">
+          <h3>Add New Customer</h3>
+          <form onSubmit={handleSubmit} className="customer-form">
+            <div className="form-group">
+              <label htmlFor="customer-name" className="form-label">Customer Name:</label>
+              <input
+                id="customer-name"
+                type="text"
+                className="form-input"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Enter customer name"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="company-name" className="form-label">Company Name:</label>
+              <input
+                id="company-name"
+                type="text"
+                className="form-input"
+                value={company}
+                onChange={(event) => setCompany(event.target.value)}
+                placeholder="Enter company name"
+              />
+            </div>
+
+            {formError && (
+              <div className="error-card">
+                <ErrorCard errorMessage={`${formError}`} />
+              </div>
+            )}
+
+            <button type="submit" className="submit-button">
+              Add Customer
+            </button>
+          </form>
+        </section>
+
+        {editingId && customerToEdit && (
+          <div className="edit-customer-section">
+            <h3>Edit Customer</h3>
+            <EditingForm
+              id={customerToEdit.id}
+              name={customerToEdit.name}
+              company={customerToEdit.company}
+              onSave={handleOnSave}
+            />
+          </div>
+        )}
       </main>
 
-      <Footer />
+      <footer className="app-footer">
+        <Footer />
+      </footer>
     </div>
   )
 }

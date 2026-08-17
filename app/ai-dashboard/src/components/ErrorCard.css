@@ -1,0 +1,19 @@
+.error-card {
+  background: var(--accent-bg);
+  border-left: 4px solid var(--accent);
+  padding: 1rem;
+  border-radius: 0 4px 4px 0;
+  margin: 1rem 0;
+}
+
+.error-card h1 {
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.error-card p {
+  color: var(--text);
+  margin: 0;
+  font-size: 0.9rem;
+}

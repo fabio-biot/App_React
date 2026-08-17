@@ -1,0 +1,71 @@
+.customer-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.customer-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    rgba(0, 0, 0, 0.15) 0 4px 6px -2px,
+    rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
+}
+
+.customer-card h2 {
+  color: var(--text-h);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.customer-card p {
+  color: var(--text);
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+}
+
+.customer-card .button-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.customer-card button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.customer-card .delete-button {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.customer-card .delete-button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.customer-card .edit-button {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.customer-card .edit-button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.customer-card .delete-button:active,
+.customer-card .edit-button:active {
+  transform: scale(0.98);
+}
